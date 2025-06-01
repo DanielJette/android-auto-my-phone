@@ -14,9 +14,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun MainScreen(viewModel: MyScreenViewModel) {
+fun MainScreen() {
+
+    val viewModel = viewModel<MyScreenViewModel>()
+
     // Collect the StateFlow as State, which will trigger recomposition when the value changes
     val batteryPercentage by viewModel.batteryInfo.collectAsState()
 

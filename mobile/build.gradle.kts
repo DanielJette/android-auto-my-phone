@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -52,6 +53,20 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation("androidx.car.app:app-projected:1.4.0")
     implementation("androidx.car.app:app:1.4.0")
+    implementation(project.dependencies.platform(libs.koin.bom))
+//    implementation(libs.koin.core)
+//    implementation("io.insert-koin:koin-android:4.0.4")
+//    implementation("io.insert-koin:koin-androidx-compose:4.0.4")
+    implementation("io.insert-koin:koin-android")
+    implementation("io.insert-koin:koin-androidx-compose")
+    implementation("io.insert-koin:koin-androidx-navigation")
+    // Java Compatibility
+    implementation("io.insert-koin:koin-android-compat:4.0.4")
+
+    implementation(libs.koin.annotations)
+    ksp(libs.koin.ksp)
 }
 
-
+ksp {
+    arg("KOIN_CONFIG_CHECK","true")
+}

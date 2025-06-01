@@ -37,24 +37,23 @@ data class BatteryInfo(
 
     override fun toString(): String =
         "\n" +
-        "level = $level\n" +
-        "scale = $scale\n" +
-        "status = $status\n" +
-        "health = $health\n" +
-        "plugged = $plugged\n" +
-        "batteryLow = $batteryLow\n" +
-        "chargingStatus = $chargingStatus\n" +
-        "cycleCount = $cycleCount\n" +
-        "present = $present\n" +
-        "technology = $technology\n" +
-        "temperature = $temperature\n" +
-        "voltage = $voltage"
-
+                "level = $level\n" +
+                "scale = $scale\n" +
+                "status = $status\n" +
+                "health = $health\n" +
+                "plugged = $plugged\n" +
+                "batteryLow = $batteryLow\n" +
+                "chargingStatus = $chargingStatus\n" +
+                "cycleCount = $cycleCount\n" +
+                "present = $present\n" +
+                "technology = $technology\n" +
+                "temperature = $temperature\n" +
+                "voltage = $voltage"
 
 
 }
 
-class BatteryLevelReceiver(private val application: Application) : BroadcastReceiver() {
+class BatteryLevelReceiver(private val context: Context) : BroadcastReceiver() {
 
     private val batteryInfo = MutableStateFlow<BatteryInfo?>(null)
 
@@ -80,7 +79,7 @@ class BatteryLevelReceiver(private val application: Application) : BroadcastRece
 
     fun getInitialBatteryLevel(): Int {
         val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-        val batteryStatus: Intent? = application.applicationContext.registerReceiver(null, intentFilter)
+        val batteryStatus: Intent? = context.applicationContext.registerReceiver(null, intentFilter)
         val level: Int = batteryStatus?.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) ?: -1
         val scale: Int = batteryStatus?.getIntExtra(BatteryManager.EXTRA_SCALE, -1) ?: -1
 
@@ -95,12 +94,12 @@ class BatteryLevelReceiver(private val application: Application) : BroadcastRece
 
         private var batteryLevelReceiver: BatteryLevelReceiver? = null
 
-        fun registerForBatteryUpdates(application: Application): StateFlow<BatteryInfo?>? {
+        fun registerForBatteryUpdates(context: Context): StateFlow<BatteryInfo?>? {
             if (batteryLevelReceiver == null) {
-                batteryLevelReceiver = BatteryLevelReceiver(application)
+                batteryLevelReceiver = BatteryLevelReceiver(context)
 
                 val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-                application.applicationContext.registerReceiver(batteryLevelReceiver, intentFilter)
+                context.applicationContext.registerReceiver(batteryLevelReceiver, intentFilter)
 
 //                batteryLevelReceiver?.getInitialBatteryLevel()
             }
