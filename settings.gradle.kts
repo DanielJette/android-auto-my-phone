@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "My Phone"
-include(":automotive")
+include(":mobile")
