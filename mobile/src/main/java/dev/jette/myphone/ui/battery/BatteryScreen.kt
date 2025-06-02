@@ -1,24 +1,20 @@
-package dev.jette.myphone
+package dev.jette.myphone.ui.battery
 
 import androidx.car.app.CarContext
 import androidx.car.app.Screen
 import androidx.car.app.model.Action
-import androidx.car.app.model.ActionStrip
-import androidx.car.app.model.CarIcon
 import androidx.car.app.model.Pane
 import androidx.car.app.model.PaneTemplate
 import androidx.car.app.model.Row
 import androidx.car.app.model.Template
-import androidx.core.graphics.drawable.IconCompat
 import androidx.lifecycle.lifecycleScope
 import dev.jette.myphone.data.BatteryInfo
 import dev.jette.myphone.di.viewModel
-import dev.jette.myphone.ui.main.MyScreenViewModel
 import kotlinx.coroutines.launch
 
-class HelloWorldScreen(carContext: CarContext) : Screen(carContext) {
+class BatteryScreen(carContext: CarContext) : Screen(carContext) {
 
-    private val myViewModel by viewModel<MyScreenViewModel>()
+    private val myViewModel by viewModel<BatterViewModel>()
     private var batteryInfo: BatteryInfo? = null
 
     init {
@@ -29,7 +25,6 @@ class HelloWorldScreen(carContext: CarContext) : Screen(carContext) {
             }
         }
     }
-
 
     override fun onGetTemplate(): Template {
 
@@ -59,20 +54,6 @@ class HelloWorldScreen(carContext: CarContext) : Screen(carContext) {
             )
         }
         val template = PaneTemplate.Builder(pane.build())
-
-//        if (batteryInfo?.isLow == true) {
-//        val icon = CarIcon.Builder(IconCompat.createWithResource(carContext, R.drawable.ic_battery_saver)).build()
-//        val action = Action.Builder()
-//            .setTitle("Battery Saver")
-//            .setIcon(icon)
-//            .setEnabled(true)
-//            .setOnClickListener {
-//
-//            }
-//            .build()
-//            template.setActionStrip(ActionStrip.Builder().addAction(action).build())
-//        }
-
-        return template.setTitle("My Phone").build()
+        return template.setHeaderAction(Action.APP_ICON).setTitle("My Phone").build()
     }
 }

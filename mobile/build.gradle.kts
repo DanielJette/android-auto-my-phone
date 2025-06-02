@@ -64,6 +64,7 @@ dependencies {
     implementation("io.insert-koin:koin-android-compat:4.0.4")
 
     implementation(libs.koin.annotations)
+    debugImplementation(libs.ui.tooling)
     ksp(libs.koin.ksp)
 }
 

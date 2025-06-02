@@ -38,7 +38,7 @@
             tools:ignore="MetadataTagInsideApplicationTag" />
 
         <service
-            android:name="dev.jette.myphone.HelloWorldService"
+            android:name="dev.jette.myphone.service.BatteryCarAppService"
             android:exported="true">
             <intent-filter>
                 <action android:name="androidx.car.app.CarAppService" />

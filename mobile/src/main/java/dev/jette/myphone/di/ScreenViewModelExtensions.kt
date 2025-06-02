@@ -3,7 +3,6 @@ package dev.jette.myphone.di
 import androidx.car.app.Screen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelStoreOwner
-import dev.jette.myphone.getViewModelStoreOwner
 import org.koin.android.compat.ViewModelCompat
 import org.koin.core.parameter.ParametersDefinition
 

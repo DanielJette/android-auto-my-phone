@@ -1,28 +1,19 @@
-package dev.jette.myphone
+package dev.jette.myphone.service
 
 import android.content.Intent
 import android.content.pm.ApplicationInfo
-import android.content.pm.PackageInstaller.SessionInfo
 import androidx.car.app.CarAppService
 import androidx.car.app.Screen
 import androidx.car.app.Session
 import androidx.car.app.validation.HostValidator
+import dev.jette.myphone.ui.battery.BatteryScreen
 
-/**
- * Entry point for the hello world app.
- *
- *
- * [CarAppService] is the main interface between the app and the car host. For more
- * details, see the [Android for
- * Cars Library developer guide](https://developer.android.com/training/cars/navigation).
- */
-class HelloWorldService : CarAppService() {
-
+class BatteryCarAppService : CarAppService() {
 
     override fun onCreateSession(sessionInfo: androidx.car.app.SessionInfo): Session {
         return object : Session() {
             override fun onCreateScreen(intent: Intent): Screen {
-                return HelloWorldScreen(carContext)
+                return BatteryScreen(carContext)
             }
         }
     }

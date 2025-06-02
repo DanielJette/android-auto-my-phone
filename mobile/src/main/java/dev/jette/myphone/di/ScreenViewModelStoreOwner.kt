@@ -1,7 +1,6 @@
-package dev.jette.myphone
+package dev.jette.myphone.di
 
 import androidx.car.app.Screen
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.lifecycleScope
