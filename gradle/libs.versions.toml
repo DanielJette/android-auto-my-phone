@@ -1,5 +1,7 @@
 [versions]
 agp = "8.10.1"
+appProjected = "1.4.0"
+koinAndroidCompat = "4.0.4"
 kotlin = "2.1.21"
 coreKtx = "1.16.0"
 junit = "4.13.2"
@@ -17,6 +19,8 @@ koin-annotations = "2.0.0"
 uiTooling = "1.8.2"
 
 [libraries]
+androidx-app = { module = "androidx.car.app:app", version.ref = "appProjected" }
+androidx-app-projected = { module = "androidx.car.app:app-projected", version.ref = "appProjected" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -35,6 +39,10 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+koin-android = { module = "io.insert-koin:koin-android" }
+koin-android-compat = { module = "io.insert-koin:koin-android-compat", version.ref = "koinAndroidCompat" }
+koin-androidx-navigation = { module = "io.insert-koin:koin-androidx-navigation" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
 koin-core = { module = "io.insert-koin:koin-core" }
 koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "koin-annotations" }

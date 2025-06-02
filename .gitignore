@@ -9,3 +9,5 @@
 .cxx
 local.properties
 /mobile/build
+/mobile/release
+/mobile/debug

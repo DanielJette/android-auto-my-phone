@@ -13,7 +13,7 @@ android {
         applicationId = "dev.jette.myphone"
         minSdk = 28
         targetSdk = 35
-        versionCode = 1
+        versionCode = 2
         versionName = "1.0"
     }
 
@@ -39,35 +39,32 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.legacy.support.v4)
-    implementation(libs.androidx.legacy.support.v13)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
+    ksp(libs.koin.ksp)
+
     implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.app)
+    implementation(libs.androidx.app.projected)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.legacy.support.v13)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.material3)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation("androidx.car.app:app-projected:1.4.0")
-    implementation("androidx.car.app:app:1.4.0")
-    implementation(project.dependencies.platform(libs.koin.bom))
-//    implementation(libs.koin.core)
-//    implementation("io.insert-koin:koin-android:4.0.4")
-//    implementation("io.insert-koin:koin-androidx-compose:4.0.4")
-    implementation("io.insert-koin:koin-android")
-    implementation("io.insert-koin:koin-androidx-compose")
-    implementation("io.insert-koin:koin-androidx-navigation")
-    // Java Compatibility
-    implementation("io.insert-koin:koin-android-compat:4.0.4")
-
+    implementation(libs.koin.android)
+    implementation(libs.koin.android.compat)
+    implementation(libs.koin.androidx.compose)
+    implementation(libs.koin.androidx.navigation)
     implementation(libs.koin.annotations)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(project.dependencies.platform(libs.koin.bom))
+
     debugImplementation(libs.ui.tooling)
-    ksp(libs.koin.ksp)
 }
 
 ksp {
-    arg("KOIN_CONFIG_CHECK","true")
+    arg("KOIN_CONFIG_CHECK", "true")
 }
